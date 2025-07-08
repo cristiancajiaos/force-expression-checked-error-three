@@ -3,19 +3,31 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Layout } from './layout/layout';
+import { Foo } from './components/foo/foo';
+import { Bar } from './components/bar/bar';
+import { Baz } from './components/baz/baz';
+import {provideHttpClient, withFetch} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Layout,
+    Foo,
+    Bar,
+    Baz
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })
